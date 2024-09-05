@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34714.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnatrixCMS", "OnatrixCMS\OnatrixCMS.csproj", "{EE225A1D-8569-4ACD-B869-B17EBC0412C8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE225A1D-8569-4ACD-B869-B17EBC0412C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE225A1D-8569-4ACD-B869-B17EBC0412C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE225A1D-8569-4ACD-B869-B17EBC0412C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE225A1D-8569-4ACD-B869-B17EBC0412C8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C64AA453-D5AA-484D-86BC-FF90584153D1}
+	EndGlobalSection
+EndGlobal
