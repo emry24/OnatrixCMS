@@ -8,6 +8,10 @@
     .ChildrenOfType("serviceItemTemplate")
     .Where(x => x.IsVisible());
 }
+@if (!string.IsNullOrEmpty(ViewBag.Title))
+{
+    @await Html.PartialAsync("partials/static/breadcrumb.cshtml")
+}
 
 <section id="our-services">
 	<div class="container">

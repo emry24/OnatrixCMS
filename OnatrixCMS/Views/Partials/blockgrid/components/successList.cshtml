@@ -8,15 +8,16 @@
 
 @if (lists != null) {
 <div class="success-numbers">
-    <div class="list-item">
+    <!-- <div class="list-item"> -->
         @foreach (var item in lists)
         {
             var listTitle = item?.Content.Value<string>("listTitle") ?? "";
             var listDescription = item?.Content.Value<string>("listDescription") ?? "";
-
-            <h3>@listTitle</h3>
-            <p>@listDescription</p> 
+            <div class="list-item">   
+                <h3>@listTitle</h3>
+                <p>@listDescription</p> 
+            </div> 
         }
-    </div>
+    <!-- </div> -->
 </div>
 }

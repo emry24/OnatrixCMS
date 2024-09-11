@@ -1,0 +1,47 @@
+.page-title {
+    background-color: var(--color-gray);
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 80px;
+        padding-bottom: 80px;
+
+        h2 {
+        }
+
+        .breadcrumb {
+            display: flex;
+            flex-direction: row;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .breadcrumb li {
+            //margin-right: 10px;
+
+
+            a {
+                color: var(--color-primary);
+
+                &:hover {
+                    color: var(--color-secondary);
+                }
+
+                &.active {
+                    color: var(--color-secondary);
+                }
+            }
+        }
+
+        .breadcrumb li:not(:last-child)::after {
+            font-family: "Font Awesome 6 Pro";
+            font-weight: 900;
+            content: "\f054";
+            margin-left: 10px;
+            margin-right: 10px;
+            font-size: 12px;
+        }
+    }
+}

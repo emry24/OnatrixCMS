@@ -1,1 +1,30 @@
+#success-stories {
 
+    .container {
+        position: relative;
+
+        .umb-block-grid__layout-container {
+            position: relative;
+            z-index: 1;
+            margin-top: 60px;
+            text-align: center;
+            margin-bottom: 20px;
+
+            .success-numbers {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                .list-item {
+                    flex: 1;
+                    text-align: center;
+                    padding: 10px;
+
+                    h3 {
+                        font-size: 70px;
+                    }
+                }
+            }
+        }
+    }
+}
