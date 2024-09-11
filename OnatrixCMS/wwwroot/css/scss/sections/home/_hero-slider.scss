@@ -1,0 +1,52 @@
+#hero-slider {
+    position: relative;
+    overflow: hidden;
+    height: 600px;
+
+    .container {
+        padding-top: 60px;
+        padding-bottom: 60px;
+        position: relative;
+        z-index: 1;
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            //width: auto;
+            //height: 100%;
+            background-size: cover;
+            z-index: -1;
+            overflow: hidden;
+            max-width: none;
+
+            @include tablet {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            @include desktop {
+                width: 100vw;
+                height: auto;
+            }
+        }
+
+        .umb-block-grid__layout-container {
+            position: relative;
+            z-index: 1;
+            //margin-top: 60px;
+
+            @include tablet {
+                padding-right: 100px;
+            }
+
+            @include desktop {
+                padding-right: 350px;
+            }
+
+            .btn {
+                margin-top: 30px;
+            }
+        }
+    }
+}

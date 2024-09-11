@@ -1,0 +1,42 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+	Layout = "mainLayout.cshtml";
+	ViewBag.Title = Model?.Value("pageTitle") ?? null;
+
+	var selection = Umbraco.Content(Guid.Parse("fdf5d1b4-e220-4bf6-b9b8-4b40e3860ff4"))
+    .ChildrenOfType("serviceItemTemplate")
+    .Where(x => x.IsVisible());
+}
+
+<section id="our-services">
+	<div class="container">
+		@if (!string.IsNullOrEmpty(Model.Value("customHeadline").ToString())) {
+			<div class="headline">
+				<h2 class="title">@Model.Value("customHeadline")</h2>
+			</div>
+		}
+		<div class="services">
+		@foreach (var item in selection) {
+			var image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
+			var preamble = item?.Value<string>("preamble") ?? "";
+
+			<a href="@item.Url()">
+				<div class="item">
+					<div class="header">
+						<h5>@item.Name()</h5>
+					</div>
+					<div class="body">
+						<img src="@image" alt="@item-name()">
+					</div>
+					<div class="footer">
+						<p>@preamble</p>
+					</div>
+				</div>
+			</a>
+		}
+		</div>
+	</div>
+</section>
+
+

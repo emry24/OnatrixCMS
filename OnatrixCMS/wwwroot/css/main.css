@@ -270,3 +270,105 @@ footer .container .copyright {
   padding-top: 24px;
   padding-bottom: 24px;
 }
+
+#hero-slider {
+  position: relative;
+  overflow: hidden;
+  height: 600px;
+}
+#hero-slider .container {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  position: relative;
+  z-index: 1;
+}
+#hero-slider .container .background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  z-index: -1;
+  overflow: hidden;
+  max-width: none;
+}
+@media (min-width: 768px) {
+  #hero-slider .container .background-image {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+@media (min-width: 1400px) {
+  #hero-slider .container .background-image {
+    width: 100vw;
+    height: auto;
+  }
+}
+#hero-slider .container .umb-block-grid__layout-container {
+  position: relative;
+  z-index: 1;
+}
+@media (min-width: 768px) {
+  #hero-slider .container .umb-block-grid__layout-container {
+    padding-right: 100px;
+  }
+}
+@media (min-width: 1400px) {
+  #hero-slider .container .umb-block-grid__layout-container {
+    padding-right: 350px;
+  }
+}
+#hero-slider .container .umb-block-grid__layout-container .btn {
+  margin-top: 30px;
+}
+
+#partners .container {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+#partners .container .image-slider .slides {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#our-story .container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#our-story .container .background-image {
+  position: absolute;
+  top: 10;
+  left: 0;
+  z-index: -1;
+  max-width: 100%;
+}
+#our-story .container .umb-block-grid__layout-container {
+  position: relative;
+  z-index: 1;
+  margin-top: 60px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+#our-story .container .umb-block-grid__layout-container p {
+  padding-bottom: 40px;
+}
+#our-story .container .umb-block-grid__layout-container img {
+  padding-top: 80px;
+  max-width: 100%;
+}
+#our-story .container .story-content {
+  position: relative;
+  z-index: 1;
+  margin-top: 60px;
+}
+#our-story .container .story-content .section-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+#our-story .container .story-content img {
+  padding-top: 20px;
+  max-width: 100%;
+}

@@ -1,0 +1,16 @@
+#partners {
+
+    .container {
+        padding-top: 80px;
+        padding-bottom: 80px;
+
+        .image-slider {
+
+            .slides {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+    }
+}
