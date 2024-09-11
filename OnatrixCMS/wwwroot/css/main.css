@@ -147,6 +147,35 @@ h6 {
   }
 }
 
+.success-numbers {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  text-align: center;
+  gap: 20px;
+}
+.success-numbers .number-item {
+  flex: 1;
+}
+.success-numbers .number-item h3 {
+  font-size: 50px;
+  margin: 0px;
+}
+@media (min-width: 768px) {
+  .success-numbers .number-item h3 {
+    font-size: 100px;
+  }
+}
+.success-numbers .number-item h5 {
+  color: var(--color-light);
+}
+@media (min-width: 768px) {
+  .success-numbers {
+    flex-direction: row;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;

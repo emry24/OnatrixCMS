@@ -1,0 +1,22 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+    var lists = Model.Content.Value<IEnumerable<Umbraco.Cms.Core.Models.Blocks.BlockListItem>>("lists");
+}
+
+@if (lists != null) {
+<div class="success-numbers">
+    <div class="list-item">
+        @foreach (var item in lists)
+        {
+            var listTitle = item?.Content.Value<string>("listTitle") ?? "";
+            var listDescription = item?.Content.Value<string>("listDescription") ?? "";
+
+            <h3>@listTitle</h3>
+            <p>@listDescription</p> 
+        }
+    </div>
+</div>
+}

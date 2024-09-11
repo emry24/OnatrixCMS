@@ -1,0 +1,29 @@
+.success-numbers {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    text-align: center;
+    gap: 20px;
+
+    .number-item {
+        flex: 1;
+
+        h3 {
+            font-size: 50px;
+            margin: 0px;
+
+            @include tablet {
+                font-size: 100px;
+            }
+        }
+
+        h5 {
+            color: var(--color-light);
+        }
+    }
+
+    @include tablet {
+        flex-direction: row;
+    }
+}

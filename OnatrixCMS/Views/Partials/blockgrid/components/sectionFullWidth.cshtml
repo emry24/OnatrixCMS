@@ -1,4 +1,5 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using Umbraco.Cms.Core.PropertyEditors.ValueConverters
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @using static Umbraco.Cms.Core.PropertyEditors.ValueConverters.ColorPickerValueConverter;
@@ -11,7 +12,7 @@
     var spacingBottomClass = (Model!.Content.Value<bool>("addSpaceToBottom")) ? "spacing-bottom" : "";
     var centerContentClass = (Model!.Content.Value<bool>("centerContentOnPage")) ? "center" : "";
 
-    var sectionBackgroundColorLabel = Model?.Content?.Value<PickedColor>("sectionBackgroundColor")?.Label.ToLower() ?? null;
+    var sectionBackgroundColorLabel = Model?.Content?.Value<ColorPickerValueConverter.PickedColor>("sectionBackgroundColor")?.Label.ToLower() ?? null;
     var backgroundColorClass = (!string.IsNullOrEmpty(sectionBackgroundColorLabel) && sectionBackgroundColorLabel != "none") ? $"bg-{sectionBackgroundColorLabel}" : "";
 
     var sectionBackgroundImage = Model?.Content.Value<IPublishedContent>("sectionBackgroundImage")?.Url() ?? null;
@@ -31,6 +32,7 @@
         <img class="background-image" src="@sectionBackgroundImage" alt="@sectionTitle background image" />
     }
 
-        @await Html.GetBlockGridItemAreasHtmlAsync(Model)
+    @await Html.GetBlockGridItemAreasHtmlAsync(Model)
     </div>
+    
 </section>
