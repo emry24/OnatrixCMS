@@ -4,9 +4,17 @@
 	Layout = "mainLayout.cshtml";
 	ViewBag.Title = Model?.Value("pageTitle") ?? null;
 
-	var selection = Umbraco.Content(Guid.Parse("fdf5d1b4-e220-4bf6-b9b8-4b40e3860ff4"))
-    .ChildrenOfType("serviceItemTemplate")
+	var selection = Umbraco!.Content(Guid.Parse("fdf5d1b4-e220-4bf6-b9b8-4b40e3860ff4"))!
+    .ChildrenOfType("serviceItemTemplate")!
     .Where(x => x.IsVisible());
+
+	var itemsPerPage = 6;
+
+	if (!int.TryParse(Context.Request.Query["page"], out int currentPage))
+		currentPage = 1;
+
+	var totalItems = selection?.Count() ?? 0;
+	var pagedItems = selection?.Skip((currentPage - 1) * itemsPerPage).Take(itemsPerPage);
 }
 @if (!string.IsNullOrEmpty(ViewBag.Title))
 {
@@ -15,31 +23,70 @@
 
 <section id="our-services">
 	<div class="container">
-		@if (!string.IsNullOrEmpty(Model.Value("customHeadline").ToString())) {
+		@if (!string.IsNullOrEmpty(Model?.Value("customHeadline")?.ToString())) {
 			<div class="headline">
 				<h2 class="title">@Model.Value("customHeadline")</h2>
 			</div>
 		}
-		<div class="services">
-		@foreach (var item in selection) {
-			var image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
-			var preamble = item?.Value<string>("preamble") ?? "";
 
-			<a href="@item.Url()">
-				<div class="item">
-					<div class="header">
-						<h5>@item.Name()</h5>
+		<div class="services">
+		@if (pagedItems != null)
+		{
+			@foreach (var item in pagedItems) 
+			{
+				var image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
+				var preamble = item?.Value<string>("preamble") ?? "";
+
+				<a class="service-link" href="@item!.Url()">
+					<div class="item">
+						<div class="header">
+						<h5>@item!.Name()</h5>
+						</div>
+						<div class="body">
+							<img src="@image" alt="@item-name()">
+						</div>
+						<div class="footer">
+							<p>@preamble</p>
+						</div>
 					</div>
-					<div class="body">
-						<img src="@image" alt="@item-name()">
-					</div>
-					<div class="footer">
-						<p>@preamble</p>
-					</div>
-				</div>
-			</a>
+				</a>
+			}
 		}
 		</div>
+
+		<section class="pagination">
+			<div class="container">
+
+				@if (currentPage > 1)
+				{
+					<a href="?page=@(currentPage - 1)" class="change">PREV</a>
+				}
+				else
+				{
+					<span class="change inactive">PREV</span>
+				}
+
+				<ul class="pages">
+					@for (int i = 1; i <= Math.Ceiling((decimal)totalItems / itemsPerPage); i++)
+					{
+						<li class="@((i == currentPage) ? "number active" : "number")">
+							<a href="?page=@i">@i</a>
+						</li>
+						
+					}
+				</ul>
+
+				@if (currentPage < Math.Ceiling((decimal)totalItems / itemsPerPage))
+				{
+					<a class="change" href="?page=@(currentPage + 1)">NEXT</a>
+				}
+				else
+				{
+					<span class="change inactive">NEXT</span>
+				}
+			</div>
+		</section>
+
 	</div>
 </section>
 

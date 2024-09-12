@@ -1,12 +1,21 @@
-// a {
-//     color: var(--color-secondary);
+a {
+     color: var(--color-primary);
 
-//     &:hover {
-//         color: var(--color-primary);
-//     }
-// }
+     &:hover {
+         color: var(--color-secondary);
+     }
+}
 
-@include link-colors( --color-secondary, --color-primary );
+.service-link {
+    color: var(--color-primary);
+
+    &:hover {
+        color: var(--color-primary);
+    }
+}
+
+//@include link-colors( --color-secondary, --color-primary );
+@include link-colors( --color-primary, --color-secondary );
 
 @include theme-links( 'dark', --color-light, --color-accent );
 

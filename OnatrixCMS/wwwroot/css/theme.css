@@ -51,10 +51,24 @@ span {
 }
 
 a {
+  color: var(--color-primary);
+}
+a:hover {
   color: var(--color-secondary);
 }
-a:hover, a:fokus, a:active {
+
+.service-link {
   color: var(--color-primary);
+}
+.service-link:hover {
+  color: var(--color-primary);
+}
+
+a {
+  color: var(--color-primary);
+}
+a:hover, a:fokus, a:active {
+  color: var(--color-secondary);
 }
 
 .bg-dark a {

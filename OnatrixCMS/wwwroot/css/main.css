@@ -48,12 +48,6 @@ a {
   font-size: 1em;
   text-decoration: none;
 }
-a:hover {
-  color: var(--color-secondary);
-}
-a.active {
-  color: var(--color-secondary);
-}
 a[target=_blank]::after {
   content: "\f08e";
   font-family: "Font Awesome 6 Pro";
@@ -219,6 +213,47 @@ h6 {
   margin-left: 10px;
   margin-right: 10px;
   font-size: 12px;
+}
+
+#our-services {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+#our-services .container .headline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 50px;
+}
+#our-services .container .services {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+@media (min-width: 768px) {
+  #our-services .container .services {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+}
+@media (min-width: 1400px) {
+  #our-services .container .services {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+}
+#our-services .container .services .item h5 {
+  padding-left: 30px;
+}
+#our-services .container .services .item p {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+#our-services .container .services .item img {
+  min-width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
