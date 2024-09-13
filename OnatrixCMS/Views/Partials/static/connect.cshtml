@@ -1,0 +1,49 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@inject Umbraco.Cms.Web.Common.UmbracoHelper UmbracoHelper
+@{    
+    var rootContents = UmbracoHelper.ContentAtRoot();
+    var settings = rootContents?.FirstOrDefault(x => x.ContentType.Alias == "settingsPage") ?? null;
+    var officeLocation = settings?.Value<string>("officeLocation") ?? "";
+    var officePhoneNumber = settings?.Value<string>("officePhoneNumber") ?? "";
+    var officeEmailAddress = settings?.Value<string>("officeEmailAddress") ?? "";
+}
+
+<section id="connect-section">
+
+	<div class="container">
+        <div class="images">
+
+            <img class="background-image" src="/media/d4sczncw/background-component.svg" alt="background-component" />
+
+            <img class="image" src="/media/w4gbxsss/man.svg" alt="man" />
+
+        </div>
+        <div class="connect-info">
+            <h2>Let us know about your next project</h2>
+            <div class="info">
+                <div class="info-items">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div class="item">
+                        <b>Office location</b>
+                        <p>@officeLocation</p>
+                    </div>
+                </div>
+                <div class="info-items">
+                    <i class="fa-solid fa-phone fa-flip-horizontal icon"></i>
+                    <div class="item">
+                        <b>Phone number</b>
+                        <p>@officePhoneNumber</p>
+                    </div>
+                </div>
+                <div class="info-items">
+                    <i class="fa-regular fa-envelope"></i>
+                    <div class="item">
+                        <b>E-mail address</b>
+                        <p>@officeEmailAddress</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</section>

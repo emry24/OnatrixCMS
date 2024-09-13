@@ -1,0 +1,83 @@
+#connect-section {
+    //background-color: var(--color-gray);
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+
+        @include tablet {
+            flex-direction: row;
+            align-items: flex-end;
+        }
+
+        @include desktop {
+            height: 700px;
+            overflow: hidden;
+        }
+
+        .images {
+            position: relative;
+            display: none;
+
+            @include tablet {
+                display: block;
+                width: 50%;
+            }
+
+            .background-image {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 93%;
+                z-index: 0;
+            }
+
+            .image {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                z-index: 1;
+                max-width: 80%;
+            }
+        }
+
+        .connect-info {
+            max-width: 400px;
+            margin-top: 100px;
+            margin-bottom: 100px;
+            // @include tablet {
+            //     max-width: 400px;
+            //     margin-top: 100px;
+            //     margin-bottom: 100px;
+            // }
+
+            .info {
+
+                .info-items {
+                    display: flex;
+
+                    gap: 10px;
+                    padding-top: 20px;
+
+                    i {
+                        font-size: 20px;
+                        color: var(--color-secondary);
+                        padding-top: 2px;
+                        padding-right: 2px;
+                    }
+
+                    .item {
+                        display: flex;
+                        flex-direction: column;
+
+                        p{
+                            font-style: italic;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

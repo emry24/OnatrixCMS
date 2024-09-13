@@ -181,6 +181,14 @@ h6 {
   padding-top: 40px;
 }
 
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
 .page-title {
   background-color: var(--color-gray);
 }
@@ -254,6 +262,156 @@ h6 {
   min-width: 100%;
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+#connect-section .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+@media (min-width: 768px) {
+  #connect-section .container {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+}
+@media (min-width: 1400px) {
+  #connect-section .container {
+    height: 700px;
+    overflow: hidden;
+  }
+}
+#connect-section .container .images {
+  position: relative;
+  display: none;
+}
+@media (min-width: 768px) {
+  #connect-section .container .images {
+    display: block;
+    width: 50%;
+  }
+}
+#connect-section .container .images .background-image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 93%;
+  z-index: 0;
+}
+#connect-section .container .images .image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  max-width: 80%;
+}
+#connect-section .container .connect-info {
+  max-width: 400px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+#connect-section .container .connect-info .info .info-items {
+  display: flex;
+  gap: 10px;
+  padding-top: 20px;
+}
+#connect-section .container .connect-info .info .info-items i {
+  font-size: 20px;
+  color: var(--color-secondary);
+  padding-top: 2px;
+  padding-right: 2px;
+}
+#connect-section .container .connect-info .info .info-items .item {
+  display: flex;
+  flex-direction: column;
+}
+#connect-section .container .connect-info .info .info-items .item p {
+  font-style: italic;
+}
+
+.pagination .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.pagination .container ul {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+}
+.pagination .container ul li {
+  list-style-type: none;
+}
+.pagination .container ul li a {
+  margin: 20px;
+}
+
+#expert-section .container {
+  text-align: center;
+}
+#expert-section .container .experts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+#expert-section .container .experts-grid .expert-box {
+  padding: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#expert-section .container .experts-grid .expert-box img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+}
+#expert-section .container .experts-grid .expert-box h4 {
+  padding-left: 30px;
+}
+#expert-section .container .experts-grid .expert-box p {
+  font-size: 1rem;
+  color: var(--color-primary-light);
+  padding-left: 30px;
+}
+@media (min-width: 768px) {
+  #expert-section .container .experts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1400px) {
+  #expert-section .container .experts-grid {
+    grid-template-columns: repeat(12, 1fr);
+  }
+  #expert-section .container .experts-grid .expert-box:nth-child(1) {
+    grid-column: span 4;
+  }
+  #expert-section .container .experts-grid .expert-box:nth-child(2) {
+    grid-column: span 4;
+  }
+  #expert-section .container .experts-grid .expert-box:nth-child(3) {
+    grid-column: span 4;
+  }
+  #expert-section .container .experts-grid .expert-box:nth-child(4),
+  #expert-section .container .experts-grid .expert-box:nth-child(5),
+  #expert-section .container .experts-grid .expert-box:nth-child(6),
+  #expert-section .container .experts-grid .expert-box:nth-child(7) {
+    grid-column: span 3;
+  }
+  #expert-section .container .experts-grid .expert-box:nth-child(4) h4,
+  #expert-section .container .experts-grid .expert-box:nth-child(5) h4,
+  #expert-section .container .experts-grid .expert-box:nth-child(6) h4,
+  #expert-section .container .experts-grid .expert-box:nth-child(7) h4 {
+    font-size: 1rem;
+  }
+  #expert-section .container .experts-grid .expert-box:nth-child(4) p,
+  #expert-section .container .experts-grid .expert-box:nth-child(5) p,
+  #expert-section .container .experts-grid .expert-box:nth-child(6) p,
+  #expert-section .container .experts-grid .expert-box:nth-child(7) p {
+    font-size: 0.875rem;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {

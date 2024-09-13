@@ -16,6 +16,7 @@
 	var totalItems = selection?.Count() ?? 0;
 	var pagedItems = selection?.Skip((currentPage - 1) * itemsPerPage).Take(itemsPerPage);
 }
+
 @if (!string.IsNullOrEmpty(ViewBag.Title))
 {
     @await Html.PartialAsync("partials/static/breadcrumb.cshtml")
@@ -89,5 +90,9 @@
 
 	</div>
 </section>
+
+
+@await Html.PartialAsync("partials/static/connect.cshtml")
+
 
 

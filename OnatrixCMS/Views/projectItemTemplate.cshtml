@@ -1,0 +1,23 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ProjectItemTemplate>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "mainLayout.cshtml";
+    ViewBag.Title = Model?.Value("pageTitle") ?? null;
+}	
+
+@if (!string.IsNullOrEmpty(ViewBag.Title))
+{
+    @await Html.PartialAsync("partials/static/breadcrumb.cshtml")
+}
+
+<section class="project-details">
+    <div class="container">
+        @Model.Value("pageContent")
+    </div>
+
+    <p>hello world</p>
+    <p>Page Title: @Model.Value("pageTitle")</p>
+</section>
+
+@await Html.GetBlockGridHtmlAsync(Model.BottomLayout)

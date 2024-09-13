@@ -1,0 +1,73 @@
+﻿@using Umbraco.Cms.Web.Common
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@inject Umbraco.Cms.Web.Common.UmbracoHelper UmbracoHelper
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
+@{
+    var sectionTitle = Model?.Content.Value<string>("sectionTitle") ?? "";
+    var headline = Model?.Content.Value<string>("headline") ?? "";
+
+    var colorLabel = Model?.Content?.Value<ColorPickerValueConverter.PickedColor>("backgroundColor")?.Label.ToLower() ?? null;
+    var backgroundColorClass = !string.IsNullOrEmpty(colorLabel) ? $"bg-{colorLabel}" : "";
+
+    var sectionBackgroundImage = Model?.Content.Value<IPublishedContent>("sectionBackgroundImage")?.Url() ?? null;
+    var selectedImage = Model?.Content.Value<IPublishedContent>("selectedImage")?.Url() ?? null;
+    
+    var rootContents = UmbracoHelper.ContentAtRoot();
+    var settings = rootContents?.FirstOrDefault(x => x.ContentType.Alias == "settingsPage") ?? null;
+    var officeLocation = settings?.Value<string>("officeLocation") ?? "";
+    var officePhoneNumber = settings?.Value<string>("officePhoneNumber") ?? "";
+    var officeEmailAddress = settings?.Value<string>("officeEmailAddress") ?? "";
+
+	var selection = Umbraco.Content(Guid.Parse("fdf5d1b4-e220-4bf6-b9b8-4b40e3860ff4"))
+    .ChildrenOfType("serviceItemTemplate")
+    .Where(x => x.IsVisible())
+    .Take(6);
+}
+
+<section id="connect-section">
+    @if (!string.IsNullOrEmpty(backgroundColorClass))
+    {
+        <div class="background @backgroundColorClass"></div>
+    }
+
+	<div class="container">
+        <div class="images">
+            @if(!string.IsNullOrEmpty(sectionBackgroundImage))
+            {
+                <img class="background-image" src="@sectionBackgroundImage" alt="@sectionTitle background image" />
+            }
+            @if(!string.IsNullOrEmpty(sectionBackgroundImage))
+            {
+                <img class="image" src="@selectedImage" alt="@sectionTitle image" />
+            }
+        </div>
+        <div class="connect-info">
+            <h2>@headline</h2>
+            <div class="info">
+                <div class="info-items">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div class="item">
+                        <b>Office location</b>
+                        <p>@officeLocation</p>
+                    </div>
+                </div>
+                <div class="info-items">
+                    <i class="fa-solid fa-phone fa-flip-horizontal icon"></i>
+                    <div class="item">
+                        <b>Phone number</b>
+                        <p>@officePhoneNumber</p>
+                    </div>
+                </div>
+                <div class="info-items">
+                    <i class="fa-regular fa-envelope"></i>
+                    <div class="item">
+                        <b>E-mail address</b>
+                        <p>@officeEmailAddress</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</section>

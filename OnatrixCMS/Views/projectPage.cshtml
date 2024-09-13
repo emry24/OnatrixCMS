@@ -1,0 +1,57 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ProjectPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+	Layout = "mainLayout.cshtml";
+    ViewBag.Title = Model?.Value("pageTitle") ?? null;
+
+    var selection = Umbraco.Content(Guid.Parse("93991787-0284-4c33-9583-5e12f51750b8"))
+    .ChildrenOfType("projectItemTemplate")
+    .Where(x => x.IsVisible());
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.Title))
+{
+    @await Html.PartialAsync("partials/static/breadcrumb.cshtml")
+}
+
+<section id="our-projects">
+	<div class="container">
+
+		<div class="projects">
+			@if (selection != null && selection.Any())
+			{
+				@foreach (var item in selection) 
+				{
+					var image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
+					var preamble = item?.Value<string>("preamble") ?? "";
+
+					<div class="project-item">
+						
+                    	<img src="@image" alt="@item-name()">
+
+						<div class="project-text">
+							<div class="header">
+							<h5>@item.Name</h5>
+							</div>
+                        	<div class="date">
+
+                        	</div>
+							<div class="preamble">
+								<p>@preamble</p>
+							</div>
+
+                        	<a class="project-link" href="@item!.Url()">Read more</a>
+							
+						</div>
+					</div>
+				}
+			}
+		</div>
+	</div>
+</section>
+
+@await Html.GetBlockGridHtmlAsync(Model.BottomLayout)
+
+
