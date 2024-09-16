@@ -1,0 +1,36 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+    var lists = Model.Content.Value<IEnumerable<Umbraco.Cms.Core.Models.Blocks.BlockListItem>>("lists");
+}
+
+@if (lists != null) {
+
+    var header = Model?.Content.Value<string>("header") ?? "";
+    var selectedImage = Model?.Content.Value<IPublishedContent>("selectedImage")?.Url() ?? null;
+    var asideText = Model?.Content.Value<string>("asideText") ?? "";
+        
+    <h4>@header</h4>
+
+    @if (!string.IsNullOrEmpty(selectedImage)) {
+        
+        <img src="@selectedImage" alt="">
+    }
+
+    <p>@asideText</p>
+
+    <div class="tags">
+
+        @foreach (var item in lists)
+        {
+            var tagSubject = item?.Content.Value<string>("tagSubject") ?? "";
+
+            <div class="tag-item">   
+                <p>@tagSubject</p> 
+            </div> 
+        }
+
+    </div>
+}

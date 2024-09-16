@@ -11,13 +11,18 @@
     @await Html.PartialAsync("partials/static/breadcrumb.cshtml")
 }
 
-<section class="project-details">
+<section id="project-details">
     <div class="container">
-        @Model.Value("pageContent")
-    </div>
 
-    <p>hello world</p>
-    <p>Page Title: @Model.Value("pageTitle")</p>
+        <aside>
+            @await Html.GetBlockGridHtmlAsync(Model.AsideLayout)
+        </aside>
+
+        <div class="project-details-content">
+            @Model.Value("pageContent")
+        </div>
+        
+    </div>
 </section>
 
 @await Html.GetBlockGridHtmlAsync(Model.BottomLayout)

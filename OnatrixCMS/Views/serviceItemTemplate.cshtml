@@ -1,15 +1,28 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ServiceItemTemplate>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
 	Layout = "mainLayout.cshtml";
 	ViewBag.Title = Model.Name;
 }
 
+@if (!string.IsNullOrEmpty(ViewBag.Title))
+{
+    @await Html.PartialAsync("partials/static/breadcrumb.cshtml")
+}
 
-<section class="service-details">
+<section id="service-details">
     <div class="container">
-        @Model.Value("pageContent")
+
+        <aside>
+            @await Html.GetBlockGridHtmlAsync(Model.AsideLayout)
+        </aside>
+
+        <div class="service-details-content">
+            @Model.Value("pageContent")
+        </div>
+        
     </div>
 </section>
 
-@await Html.PartialAsync("partials/static/connect.cshtml")
+@await Html.GetBlockGridHtmlAsync(Model.BottomLayout)

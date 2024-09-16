@@ -1,0 +1,43 @@
+#service-details {
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        padding-top: 60px;
+
+        @include tablet {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        aside {
+            max-width: 400px;
+
+            img {
+                max-width: 100%;
+                padding-bottom: 30px;
+            }
+
+            .help-form {
+                //color: var(--color-light);
+                //background-color: var(--color-primary);
+                //padding: 20px;
+                //border-radius: 3px;
+                //margin-bottom: 30px;
+
+                h4 {
+                    //color: var(--color-light);
+                }
+            }
+        }
+
+        .service-details-content {
+            max-width: 767px;
+
+            img {
+                max-width: 100%;
+                padding-bottom: 30px;
+            }
+        }
+    }
+}

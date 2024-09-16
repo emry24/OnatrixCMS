@@ -1,0 +1,16 @@
+.tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
+
+    .tag-item {
+        border: 1px solid var(--color-primary-light);
+        border-radius: 30px;
+        padding: 5px;
+
+        p {
+            padding: 5px 10px 5px 10px;
+        }
+    }
+}

@@ -17,9 +17,10 @@
 }
 
 <section id="our-projects">
+
 	<div class="container">
 
-		<div class="projects">
+		<div class="projects-content">
 			@if (selection != null && selection.Any())
 			{
 				@foreach (var item in selection) 
@@ -36,19 +37,23 @@
 							<h5>@item.Name</h5>
 							</div>
                         	<div class="date">
-
+                                
                         	</div>
 							<div class="preamble">
 								<p>@preamble</p>
 							</div>
 
-                        	<a class="project-link" href="@item!.Url()">Read more</a>
+                        	<a class="project-link" href="@item!.Url()">Read more<i class="fa-solid fa-arrow-right"></i></a>
 							
 						</div>
 					</div>
 				}
 			}
 		</div>
+
+        <aside>
+            @await Html.GetBlockGridHtmlAsync(Model.AsideLayout)
+        </aside>
 	</div>
 </section>
 
