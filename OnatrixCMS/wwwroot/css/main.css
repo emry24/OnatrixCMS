@@ -414,32 +414,6 @@ h6 {
   }
 }
 
-#service-details .container {
-  display: flex;
-  flex-direction: column;
-  padding-top: 60px;
-}
-@media (min-width: 768px) {
-  #service-details .container {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
-#service-details .container aside {
-  max-width: 400px;
-}
-#service-details .container aside img {
-  max-width: 100%;
-  padding-bottom: 30px;
-}
-#service-details .container .service-details-content {
-  max-width: 767px;
-}
-#service-details .container .service-details-content img {
-  max-width: 100%;
-  padding-bottom: 30px;
-}
-
 #our-projects .container {
   display: flex;
   flex-direction: column;
@@ -485,19 +459,126 @@ h6 {
   padding-bottom: 30px;
 }
 
+#service-details .container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px;
+}
+@media (min-width: 768px) {
+  #service-details .container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+#service-details .container aside {
+  max-width: 400px;
+}
+#service-details .container aside img {
+  max-width: 100%;
+  padding-bottom: 30px;
+}
+#service-details .container .service-details-content {
+  max-width: 767px;
+}
+#service-details .container .service-details-content img {
+  max-width: 100%;
+  padding-bottom: 30px;
+}
+
+#project-details .container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px;
+}
+@media (min-width: 1400px) {
+  #project-details .container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+#project-details .container .project-details-content {
+  max-width: 767px;
+  flex: 1;
+}
+#project-details .container .project-details-content img {
+  max-width: 100%;
+}
+#project-details .container aside {
+  max-width: 400px;
+  flex: 1;
+}
+#project-details .container aside img {
+  max-width: 100%;
+  padding-bottom: 30px;
+}
+
 .tags {
+  display: flex;
+  flex-direction: column;
+}
+.tags .tag-items {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 1em;
 }
-.tags .tag-item {
+.tags .tag-items .tag-item {
   border: 1px solid var(--color-primary-light);
   border-radius: 30px;
   padding: 5px;
 }
-.tags .tag-item p {
+.tags .tag-items .tag-item p {
   padding: 5px 10px 5px 10px;
+}
+
+#help-form {
+  color: var(--color-light);
+  background-color: var(--color-primary);
+  padding: 20px;
+  border-radius: 3px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+#help-form h4 {
+  color: var(--color-light);
+  font-weight: 500;
+}
+#help-form .email-wrapper {
+  position: relative;
+  width: 100%;
+}
+#help-form .email-wrapper i {
+  position: absolute;
+  font-size: 20px;
+  right: 20px;
+  top: 38%;
+  transform: translateY(-50%);
+  color: var(--color-primary);
+}
+
+form .content {
+  padding-top: 30px;
+}
+form .content .form-input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+form .content .form-input-group input, form .content .form-input-group textarea {
+  margin-bottom: 20px;
+  padding: 15px;
+  width: 100%;
+  border: 1px solid var(--color-primary-light);
+  border-radius: 5px;
+  font-style: italic;
+}
+form .content .form-input-group .form-select {
+  margin-bottom: 20px;
+  padding: 15px;
+  width: 100%;
+  border: 1px solid var(--color-primary-light);
+  margin-top: 7px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

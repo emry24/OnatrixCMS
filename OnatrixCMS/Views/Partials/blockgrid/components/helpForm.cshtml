@@ -1,0 +1,33 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
+@{    
+    var header = Model?.Content.Value<string>("header") ?? "";
+    var formText = Model?.Content.Value<string>("formText") ?? "";
+
+    var colorLabel = Model?.Content?.Value<ColorPickerValueConverter.PickedColor>("backgroundColor")?.Label.ToLower() ?? null;
+    var backgroundColor = !string.IsNullOrEmpty(colorLabel) ? $"bg-{colorLabel}" : "";
+}
+
+<section id="help-form">
+
+@if (!string.IsNullOrEmpty(backgroundColor))
+{
+    <div class="background @backgroundColor"></div>
+}
+
+    <form>
+        <h4>@header</h4>
+        <p>@formText</p>
+        <div class="content">
+            <div class="form-input-group">
+                <div class="email-wrapper">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input id="email" name="email" type="email" placeholder="Email address" class="form-input">
+                </div>               
+            </div>          
+        </div>
+    </form>
+
+</section>

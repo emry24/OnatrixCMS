@@ -14,13 +14,13 @@
 <section id="project-details">
     <div class="container">
 
-        <aside>
-            @await Html.GetBlockGridHtmlAsync(Model.AsideLayout)
-        </aside>
-
         <div class="project-details-content">
             @Model.Value("pageContent")
         </div>
+
+        <aside>
+            @await Html.GetBlockGridHtmlAsync(Model.AsideLayout)
+        </aside>
         
     </div>
 </section>
