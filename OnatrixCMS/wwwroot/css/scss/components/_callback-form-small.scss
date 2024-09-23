@@ -1,0 +1,24 @@
+#callback-form-small {
+
+    form {
+        max-width: 470px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+
+        h3 {
+            background-color: var(--color-primary);
+            padding: 20px;
+        }
+
+        p {
+            padding: 20px;
+        }
+
+        .btn-accent {
+            display: inline-block;
+            width: 100%;
+        }
+    }
+}

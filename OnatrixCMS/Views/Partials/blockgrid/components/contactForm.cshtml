@@ -2,21 +2,24 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
-@{    
+@{   
+    var sectionTitle = Model?.Content.Value<string>("sectionTitle") ?? ""; 
     var formHeader = Model?.Content.Value<string>("formHeader") ?? "";
+    var formText = Model?.Content.Value<string>("formText") ?? "";
 
     var spacingTopClass = (Model!.Content.Value<bool>("addSpaceToTop")) ? "spacing-top" : "";
     var spacingBottomClass = (Model!.Content.Value<bool>("addSpaceToBottom")) ? "spacing-bottom" : "";
     var centerContentClass = (Model!.Content.Value<bool>("centerContentOnPage")) ? "center" : "";
 }
 
-<section id="question-form" class="@spacingTopClass spacingBottomClass">
+<section id="contact-form" class="@spacingTopClass spacingBottomClass">
 
     <div class="container @centerContentClass">
 
         <form>
-            <h4>@formHeader</h4>
-
+            <h6>@sectionTitle</h6>
+            <h2>@formHeader</h2>
+            <i>@formText</i>
             <div class="content">
                 <div class="form-input-group">
                     <label class="form-label" for="name"></label>
@@ -24,14 +27,22 @@
                     <!-- <span class="form-input-error">You must enter your name</span> -->
                 </div>
                 <div class="form-input-group">
+                    <label class="form-label" for="phone"></label>
+                    <input id="phone" name="phone" type="text" placeholder="Phone" class="form-input">
+                    <!-- <span class="form-input-error">You must enter your phone number</span> -->
+                </div>
+                <div class="form-input-group">
                     <label class="form-label" for="email"></label>
-                    <input id="email" name="email" type="email" placeholder="Email" class="form-input">
+                    <input id="email" name="email" type="email" placeholder="Email address" class="form-input">
                     <!-- <span class="form-input-error">You must enter an valid e-mail address</span> -->
                 </div>
                 <div class="form-input-group">
-                    <label class="form-label" for="message"></label>
-                    <textarea id="message" name="message" placeholder="Message" class="form-textarea"></textarea>
-                    <!-- <span class="form-input-error">You must enter a message</span> -->
+                    <select id="consulting" name="consulting" class="form-select">
+                        <option selected>Financial consulting</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
                 </div>
             </div>
             <button type="submit" class="form-button btn-primary">Submit</button>

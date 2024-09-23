@@ -1,0 +1,37 @@
+#question-form {
+
+    .container {
+
+        @include desktop {
+            width: 60%;
+        }
+
+        form {
+
+            .content {
+                display: grid;
+                gap: 1rem 2rem;
+                grid-template-columns: 1fr;
+                grid-template-areas: "name" "email" "message";
+
+                @include tablet {
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-areas: "name email" "message message";
+                }
+
+                #name {
+                    grid-area: name;
+                }
+
+                #email {
+                    grid-area: email;
+                }
+
+
+                #message {
+                    grid-area: message;
+                }
+            }
+        }
+    }
+}

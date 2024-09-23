@@ -1,0 +1,39 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
+@{
+    var selection = Umbraco.Content(Guid.Parse("93991787-0284-4c33-9583-5e12f51750b8"))
+    .ChildrenOfType("projectItemTemplate")
+    .Where(x => x.IsVisible())
+    .Take(4);
+}
+
+<div class="aside-recent-projects">
+
+    <h4>Recent projects</h4>
+
+    @if (selection != null)
+	{
+		@foreach (var item in selection)
+		{
+			var image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
+			var pageTitle = item?.Value<string>("pageTitle") ?? "";
+            var created = item?.CreateDate.ToString("MMMM dd, yyyy");
+
+            <a href="@item.Url()">
+                <img src="@image" alt="@pageTitle">
+                <div class="project-content">
+
+                    <h5>@pageTitle</h5>
+                    <div class="date">
+                        <i class="fa-regular fa-calendar-days text-note"></i>
+                        <p>@created</p>
+                    </div>                        
+
+                </div>
+            </a>
+		}					
+	}
+    
+</div>

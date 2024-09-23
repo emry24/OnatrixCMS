@@ -28,12 +28,31 @@
                     padding-right: 30px;
                 }
 
-                a {
-                    font-weight: 600;
+                .project-text {
 
-                    i {
-                        color: var(--color-secondary);
-                        padding-left: 5px;
+                    .date {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        padding-bottom: 20px;
+
+                        i {
+                            color: var(--color-primary-light);
+                        }
+
+                        .date-text {
+                            color: var(--color-primary-light);
+                            padding-left: 10px;
+                        }
+                    }
+
+                    a {
+                        font-weight: 600;
+
+                        i {
+                            color: var(--color-secondary);
+                            padding-left: 5px;
+                        }
                     }
                 }
             }

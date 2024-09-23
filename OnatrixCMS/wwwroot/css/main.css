@@ -443,10 +443,23 @@ h6 {
   padding-bottom: 30px;
   padding-right: 30px;
 }
-#our-projects .container .projects-content .project-item a {
+#our-projects .container .projects-content .project-item .project-text .date {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 20px;
+}
+#our-projects .container .projects-content .project-item .project-text .date i {
+  color: var(--color-primary-light);
+}
+#our-projects .container .projects-content .project-item .project-text .date .date-text {
+  color: var(--color-primary-light);
+  padding-left: 10px;
+}
+#our-projects .container .projects-content .project-item .project-text a {
   font-weight: 600;
 }
-#our-projects .container .projects-content .project-item a i {
+#our-projects .container .projects-content .project-item .project-text a i {
   color: var(--color-secondary);
   padding-left: 5px;
 }
@@ -578,7 +591,171 @@ form .content .form-input-group .form-select {
   padding: 15px;
   width: 100%;
   border: 1px solid var(--color-primary-light);
-  margin-top: 7px;
+  border-radius: 5px;
+}
+
+@media (min-width: 1400px) {
+  #question-form .container {
+    width: 60%;
+  }
+}
+#question-form .container form .content {
+  display: grid;
+  gap: 1rem 2rem;
+  grid-template-columns: 1fr;
+  grid-template-areas: "name" "email" "message";
+}
+@media (min-width: 768px) {
+  #question-form .container form .content {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "name email" "message message";
+  }
+}
+#question-form .container form .content #name {
+  grid-area: name;
+}
+#question-form .container form .content #email {
+  grid-area: email;
+}
+#question-form .container form .content #message {
+  grid-area: message;
+}
+
+#callback-form-small form {
+  max-width: 470px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+#callback-form-small form h3 {
+  background-color: var(--color-primary);
+  padding: 20px;
+}
+#callback-form-small form p {
+  padding: 20px;
+}
+#callback-form-small form .btn-accent {
+  display: inline-block;
+  width: 100%;
+}
+
+@media (min-width: 1400px) {
+  #contact-form .container {
+    width: 60%;
+  }
+}
+#contact-form .container form {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+}
+#contact-form .container form .content {
+  display: grid;
+  gap: 1rem 2rem;
+  grid-template-columns: 1fr;
+  grid-template-areas: "name" "phone" "email" "consulting";
+}
+@media (min-width: 768px) {
+  #contact-form .container form .content {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "name phone" "email consulting";
+  }
+}
+#contact-form .container form .content #name {
+  grid-area: name;
+}
+#contact-form .container form .content #email {
+  grid-area: email;
+}
+#contact-form .container form .content #phone {
+  grid-area: phone;
+}
+#contact-form .container form .content #consulting {
+  grid-area: consulting;
+}
+
+.recent-projects {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+}
+.recent-projects a {
+  position: relative;
+  display: block;
+  width: 100%;
+  text-decoration: none;
+}
+.recent-projects a img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+.recent-projects a .project-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-border-dark-transparent);
+  color: var(--color-light);
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.recent-projects a .project-content .project-text h5 {
+  color: var(--color-light);
+}
+.recent-projects a .project-content .project-text p {
+  padding-bottom: 0px;
+}
+.recent-projects a .project-content i {
+  font-size: 50px;
+  padding-right: 40px;
+  display: none;
+}
+.recent-projects a .project-content:hover {
+  background: var(--color-primary);
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+.recent-projects a .project-content:hover h5 {
+  color: var(--color-secondary);
+}
+.recent-projects a .project-content:hover i {
+  display: inline-block;
+}
+@media (min-width: 768px) {
+  .recent-projects {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.aside-recent-projects a {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+}
+.aside-recent-projects a img {
+  width: 150px;
+  height: 100%;
+}
+.aside-recent-projects a .project-content {
+  padding-left: 20px;
+}
+.aside-recent-projects a .project-content .date {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.aside-recent-projects a .project-content .date i {
+  color: var(--color-primary-light);
+}
+.aside-recent-projects a .project-content .date p {
+  color: var(--color-primary-light);
+  padding-left: 5px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -752,6 +929,10 @@ footer .container .copyright {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
+}
+#partners .container .image-slider .slides img {
+  padding: 20px;
 }
 
 #our-story .container {
@@ -818,6 +999,9 @@ footer .container .copyright {
 }
 #success-stories .container .umb-block-grid__layout-container .success-numbers .list-item h3 {
   font-size: 70px;
+}
+#success-stories .container img {
+  max-width: 100%;
 }
 
 .umb-block-grid__layout-container {

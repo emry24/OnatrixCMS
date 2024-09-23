@@ -27,6 +27,7 @@
 				{
 					var image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
 					var preamble = item?.Value<string>("preamble") ?? "";
+					var created = item?.CreateDate.ToString("MMMM dd, yyyy");
 
 					<div class="project-item">
 						
@@ -34,10 +35,11 @@
 
 						<div class="project-text">
 							<div class="header">
-							<h5>@item.Name</h5>
+								<h5>@item.Name</h5>
 							</div>
                         	<div class="date">
-                                
+								<i class="fa-regular fa-calendar-days text-note"></i>
+                                <p class="date-text">@created</p>
                         	</div>
 							<div class="preamble">
 								<p>@preamble</p>

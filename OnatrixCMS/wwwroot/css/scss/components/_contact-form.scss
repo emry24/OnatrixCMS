@@ -1,0 +1,42 @@
+#contact-form {
+
+    .container {
+
+        @include desktop {
+            width: 60%;
+        }
+
+        form {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+
+            .content {
+                display: grid;
+                gap: 1rem 2rem;
+                grid-template-columns: 1fr;
+                grid-template-areas: "name" "phone" "email" "consulting";
+
+                @include tablet {
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-areas: "name phone" "email consulting";
+                }
+
+                #name {
+                    grid-area: name;
+                }
+
+                #email {
+                    grid-area: email;
+                }
+
+                #phone {
+                    grid-area: phone;
+                }
+
+                #consulting {
+                    grid-area: consulting;
+                }
+            }
+        }
+    }
+}
