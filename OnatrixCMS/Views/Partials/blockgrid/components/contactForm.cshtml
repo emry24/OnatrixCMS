@@ -2,7 +2,7 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
-@{   
+@{
     var sectionTitle = Model?.Content.Value<string>("sectionTitle") ?? ""; 
     var formHeader = Model?.Content.Value<string>("formHeader") ?? "";
     var formText = Model?.Content.Value<string>("formText") ?? "";
@@ -10,45 +10,59 @@
     var spacingTopClass = (Model!.Content.Value<bool>("addSpaceToTop")) ? "spacing-top" : "";
     var spacingBottomClass = (Model!.Content.Value<bool>("addSpaceToBottom")) ? "spacing-bottom" : "";
     var centerContentClass = (Model!.Content.Value<bool>("centerContentOnPage")) ? "center" : "";
+
+    bool.TryParse(ViewData["error_name"]?.ToString()!, out bool error_name);
+    bool.TryParse(ViewData["error_phone"]?.ToString()!, out bool error_phone);
+    bool.TryParse(ViewData["error_email"]?.ToString()!, out bool error_email);
+    bool.TryParse(ViewData["error_consulting"]?.ToString()!, out bool error_consulting);
 }
 
-<section id="contact-form" class="@spacingTopClass spacingBottomClass">
+<div id="contact-form" class="@spacingTopClass spacingBottomClass">
 
     <div class="container @centerContentClass">
 
-        <form>
-            <h6>@sectionTitle</h6>
-            <h2>@formHeader</h2>
-            <i>@formText</i>
-            <div class="content">
-                <div class="form-input-group">
-                    <label class="form-label" for="name"></label>
-                    <input id="name" name="name" type="text" placeholder="Name" class="form-input">
-                    <!-- <span class="form-input-error">You must enter your name</span> -->
-                </div>
-                <div class="form-input-group">
-                    <label class="form-label" for="phone"></label>
-                    <input id="phone" name="phone" type="text" placeholder="Phone" class="form-input">
-                    <!-- <span class="form-input-error">You must enter your phone number</span> -->
-                </div>
-                <div class="form-input-group">
-                    <label class="form-label" for="email"></label>
-                    <input id="email" name="email" type="email" placeholder="Email address" class="form-input">
-                    <!-- <span class="form-input-error">You must enter an valid e-mail address</span> -->
-                </div>
-                <div class="form-input-group">
-                    <select id="consulting" name="consulting" class="form-select">
-                        <option selected>Financial consulting</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div>
-            </div>
-            <button type="submit" class="form-button btn-primary">Submit</button>
+        <h6>@sectionTitle</h6>
+        <h2>@formHeader</h2>
+        <i>@formText</i>
 
-        </form>
+        @if (TempData["success"] != null)
+        {
+            <div class="success-message">@TempData["success"]</div>
+        }
+        else
+        {
+            @using (Html.BeginUmbracoForm("HandleSubmit", "ContactSurface", FormMethod.Post))
+            {
+                <div class="content">
+                    <div class="form-input-group">
+                        <label class="form-label" for="name"></label>
+                        <input id="name" name="name" type="text" placeholder="Name" class="form-input" value="@ViewData["name"]">
+                        <span class="form-input-error @((error_name) ? "form-invalid-input" : null)">You must enter your name</span>
+                    </div>
+                    <div class="form-input-group">
+                        <label class="form-label" for="phone"></label>
+                        <input id="phone" name="phone" type="text" placeholder="Phone" class="form-input" value="@ViewData["phone"]">
+                        <span class="form-input-error @((error_phone) ? "form-invalid-input" : null)">You must enter your phone number</span>
+                    </div>
+                    <div class="form-input-group">
+                        <label class="form-label" for="email"></label>
+                        <input id="email" name="email" type="email" placeholder="Email address" class="form-input" value="@ViewData["email"]">
+                        <span class="form-input-error @((error_email) ? "form-invalid-input" : null)">You must enter an valid e-mail address</span>
+                    </div>
+                    <div class="form-input-group">
+                        <select id="consulting" name="consulting" class="form-select">
+                            <option selected>Select consulting</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="form-button btn-primary">Submit</button>
+            }
+        }
 
     </div>
 
-</section>
+</div>

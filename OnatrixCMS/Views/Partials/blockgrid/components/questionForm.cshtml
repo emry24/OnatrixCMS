@@ -2,42 +2,54 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
-@{    
+@{
     var formHeader = Model?.Content.Value<string>("formHeader") ?? "";
 
     var spacingTopClass = (Model!.Content.Value<bool>("addSpaceToTop")) ? "spacing-top" : "";
     var spacingBottomClass = (Model!.Content.Value<bool>("addSpaceToBottom")) ? "spacing-bottom" : "";
     var centerContentClass = (Model!.Content.Value<bool>("centerContentOnPage")) ? "center" : "";
+
+    bool.TryParse(ViewData["error_name"]?.ToString()!, out bool error_name);
+    bool.TryParse(ViewData["error_email"]?.ToString()!, out bool error_email);
+    bool.TryParse(ViewData["error_message"]?.ToString()!, out bool error_message);
 }
 
-<section id="question-form" class="@spacingTopClass spacingBottomClass">
+<div id="question-form" class="@spacingTopClass spacingBottomClass">
 
     <div class="container @centerContentClass">
 
-        <form>
-            <h4>@formHeader</h4>
+        <h4>@formHeader</h4>
 
-            <div class="content">
-                <div class="form-input-group">
-                    <label class="form-label" for="name"></label>
-                    <input id="name" name="name" type="text" placeholder="Name" class="form-input">
-                    <!-- <span class="form-input-error">You must enter your name</span> -->
+        @if (TempData["success"] != null)
+        {
+            <div class="success-message">@TempData["Success"]</div>
+        }
+        else
+        {
+            @using (Html.BeginUmbracoForm("HandleSubmit", "QuestionSurface", FormMethod.Post))
+            {
+                <div class="content">
+                    <div class="form-input-group">
+                        <label class="form-label" for="name"></label>
+                        <input id="name" name="name" type="text" placeholder="Name" class="form-input" value="@ViewData["name"]">
+                        <span class="form-input-error @((error_name) ? "form-invalid-input" : null)">You must enter your name</span>
+                    </div>
+                    <div class="form-input-group">
+                        <label class="form-label" for="email"></label>
+                        <input id="email" name="email" type="email" placeholder="Email" class="form-input" value="@ViewData["email"]">
+                        <span class="form-input-error @((error_email) ? "form-invalid-input" : null)">You must enter an valid e-mail address</span>
+                    </div>
+                    <div class="form-input-group">
+                        <label class="form-label" for="message"></label>
+                        <textarea id="message" name="message" placeholder="Message" class="form-textarea" @ViewData["email"]>@ViewData["message"]</textarea>
+                        <span class="form-input-error @((error_message) ? "form-invalid-input" : null)">You must enter a message</span>
+                    </div>
                 </div>
-                <div class="form-input-group">
-                    <label class="form-label" for="email"></label>
-                    <input id="email" name="email" type="email" placeholder="Email" class="form-input">
-                    <!-- <span class="form-input-error">You must enter an valid e-mail address</span> -->
-                </div>
-                <div class="form-input-group">
-                    <label class="form-label" for="message"></label>
-                    <textarea id="message" name="message" placeholder="Message" class="form-textarea"></textarea>
-                    <!-- <span class="form-input-error">You must enter a message</span> -->
-                </div>
-            </div>
-            <button type="submit" class="form-button btn-primary">Submit</button>
 
-        </form>
+                <button type="submit" class="form-button btn-primary">Submit</button>
+            }
+        }
 
     </div>
 
-</section>
+</div>

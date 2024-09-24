@@ -593,6 +593,14 @@ form .content .form-input-group .form-select {
   border: 1px solid var(--color-primary-light);
   border-radius: 5px;
 }
+form .content .form-input-group .form-input-error {
+  display: none;
+  color: red;
+  padding-bottom: 10px;
+}
+form .content .form-input-group .form-invalid-input {
+  display: block;
+}
 
 @media (min-width: 1400px) {
   #question-form .container {
