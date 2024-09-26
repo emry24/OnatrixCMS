@@ -31,10 +31,19 @@ form {
                 color: red;
                 padding-bottom: 10px;
             }
- 
+
             .form-invalid-input {
                 display: block;
             }
         }
     }
+}
+
+.success-message {
+    color: green;
+    background-color: #c6f9c4;
+    padding: 15px;
+    margin-top: 20px;
+    border: 1px solid green;
+    border-radius: 4px;
 }

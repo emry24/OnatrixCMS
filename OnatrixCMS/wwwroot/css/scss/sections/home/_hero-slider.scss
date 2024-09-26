@@ -12,8 +12,6 @@
             position: absolute;
             top: 0;
             left: 0;
-            //width: auto;
-            //height: 100%;
             background-size: cover;
             z-index: -1;
             overflow: hidden;
@@ -33,15 +31,6 @@
         .umb-block-grid__layout-container {
             position: relative;
             z-index: 1;
-            //margin-top: 60px;
-
-            @include tablet {
-                //padding-right: 100px;
-            }
-
-            @include desktop {
-                //padding-right: 350px;
-            }
 
             .btn {
                 margin-top: 30px;

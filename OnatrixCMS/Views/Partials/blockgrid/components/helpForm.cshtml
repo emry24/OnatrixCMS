@@ -10,7 +10,7 @@
     var backgroundColor = !string.IsNullOrEmpty(colorLabel) ? $"bg-{colorLabel}" : "";
 }
 
-<section id="help-form">
+<div id="help-form">
 
 @if (!string.IsNullOrEmpty(backgroundColor))
 {
@@ -20,7 +20,7 @@
     <form>
         <h4>@header</h4>
         <p>@formText</p>
-        <div class="content">
+        <div class="content email-content">
             <div class="form-input-group">
                 <div class="email-wrapper">
                     <i class="fa-regular fa-envelope"></i>
@@ -30,4 +30,4 @@
         </div>
     </form>
 
-</section>
+</div>

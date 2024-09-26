@@ -33,7 +33,7 @@ namespace OnatrixCMS.Controllers
             }
 
             TempData["success"] = "Form submitted successfully.";
-            return RedirectToCurrentUmbracoPage();
+            return CurrentUmbracoPage();
         }
     }
 }

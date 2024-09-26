@@ -27,21 +27,31 @@
                 grid-template-rows: 1fr 1fr;
             }
 
-            .item {
+            .service-link {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                padding: 20px;
 
-                h5 {
-                    padding-left: 30px;
+                &:hover {
+                    transform: scale(1.1) rotate(2deg);
+                    transition: transform 0.3s ease;
                 }
 
-                p {
-                    padding-left: 30px;
-                    padding-right: 30px;
-                }
+                .item {
 
-                img {
-                    min-width: 100%;
-                    padding-top: 20px;
-                    padding-bottom: 20px;
+                    h5 {
+                        padding-left: 30px;
+                    }
+
+                    p {
+                        padding-left: 30px;
+                        padding-right: 30px;
+                    }
+
+                    img {
+                        min-width: 100%;
+                        padding-top: 20px;
+                        padding-bottom: 20px;
+                    }
                 }
             }
         }

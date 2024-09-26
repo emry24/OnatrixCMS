@@ -8,7 +8,7 @@
 
     var selection = Umbraco.Content(Guid.Parse("93991787-0284-4c33-9583-5e12f51750b8"))
     .ChildrenOfType("projectItemTemplate")
-    .Where(x => x.IsVisible());
+    .Where(x => x.IsVisible()).ToList();
 }
 
 @if (!string.IsNullOrEmpty(ViewBag.Title))
@@ -23,8 +23,10 @@
 		<div class="projects-content">
 			@if (selection != null && selection.Any())
 			{
-				@foreach (var item in selection) 
+				for (int i = 0; i < selection.Count; i++)
 				{
+					var item = selection[i];
+
 					var image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
 					var preamble = item?.Value<string>("preamble") ?? "";
 					var created = item?.CreateDate.ToString("MMMM dd, yyyy");
@@ -49,9 +51,17 @@
 							
 						</div>
 					</div>
+
+					@if (i < selection.Count - 1)
+        			{
+            			<div class="horizontal-separator"></div>
+        			}
+
 				}
 			}
 		</div>
+
+		<div class="vertical-separator"></div>
 
         <aside>
             @await Html.GetBlockGridHtmlAsync(Model.AsideLayout)

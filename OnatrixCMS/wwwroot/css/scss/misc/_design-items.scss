@@ -1,0 +1,30 @@
+.horizontal-separator {
+    height: 1px;
+    background-color: var(--color-primary-light);
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+
+.vertical-separator {
+    width: 1px;
+    background-color: var(--color-primary-light);
+    margin: 0 20px;
+    height: auto;
+}
+
+.secondary-marker {
+
+    li::marker {
+        color: var(--color-secondary);
+        font-size: 20px;
+    }
+}
+
+.green-marker {
+
+    li::marker {
+        color: #5D8C87;
+        font-size: 20px;
+    }
+}
