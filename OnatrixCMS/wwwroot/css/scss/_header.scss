@@ -43,7 +43,6 @@ header {
 
             i {
                 @include center;
-                //margin-left: 130px;
             }
 
             @include desktop {
@@ -52,9 +51,6 @@ header {
                 justify-content: space-between;
             }
         }
-
-
-
 
         .dropdown {
             position: relative;
@@ -66,7 +62,7 @@ header {
             .dropdown-toggle {
                 background: none;
                 border: none;
-                cursor: pointer; 
+                cursor: pointer;
 
                 i {
                     font-size: 20px;
@@ -75,11 +71,28 @@ header {
 
             .dropdown-menu {
                 display: none;
-                position: absolute;
-                background-color: var(--color-light);
+                position: fixed;
+                top: 160px;
+                left: 0;
+                width: 100vw;
+                background-color: var(--color-primary);
                 border: 1px solid #ccc;
                 margin-top: 5px;
                 z-index: 10;
+
+                @include tablet {
+                    top: 135px;
+                }
+
+                .dropdown-search {
+                    display: flex;
+                    flex-direction: row;
+                    padding-left: 20px;
+                    padding-top: 10px;
+                    padding-bottom: 15px;
+                    gap: 1em;
+                    color: var(--color-light);
+                }
             }
 
             .dropdown-menu.show {
@@ -91,9 +104,12 @@ header {
                 padding: 10px;
                 text-decoration: none;
                 color: black;
+                color: var(--color-light);
+                padding-left: 20px;
 
                 &:hover {
-                    background-color: #f0f0f0;
+                    color: var(--color-primary);
+                    background-color: var(--color-secondary);
                 }
             }
         }

@@ -1,20 +1,46 @@
 #contact-form {
+    position: relative;
+
+    .background-image {
+        position: relative;
+        width: 100%;
+        z-index: 1;
+        background-size: cover;
+        overflow: hidden;
+        display: none;
+
+        @include tablet {
+            display: block;
+        }
+    }
 
     .container {
+        position: relative;
+        z-index: 2;
+        background-color: var(--color-light);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding-top: 60px;
+
+        @include tablet {
+            margin-top: -200px;
+            margin-bottom: 0;
+        }
 
         @include desktop {
-            width: 60%;
+            margin-top: -450px;
+            margin-bottom: 0;
         }
 
         form {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 40px;
+            width: 100%;
 
             .content {
                 display: grid;
                 gap: 1rem 2rem;
                 grid-template-columns: 1fr;
                 grid-template-areas: "name" "phone" "email" "consulting";
+
 
                 @include tablet {
                     grid-template-columns: 1fr 1fr;

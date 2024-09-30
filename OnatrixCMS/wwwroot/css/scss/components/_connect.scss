@@ -6,6 +6,7 @@
         flex-direction: column;
         justify-content: space-between;
         position: relative;
+        height: 100%;
 
         @include tablet {
             flex-direction: row;
@@ -47,11 +48,6 @@
             max-width: 400px;
             margin-top: 100px;
             margin-bottom: 100px;
-            // @include tablet {
-            //     max-width: 400px;
-            //     margin-top: 100px;
-            //     margin-bottom: 100px;
-            // }
 
             .info {
 

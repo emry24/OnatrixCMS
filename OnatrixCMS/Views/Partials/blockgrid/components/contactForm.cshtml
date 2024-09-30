@@ -11,6 +11,8 @@
     var spacingBottomClass = (Model!.Content.Value<bool>("addSpaceToBottom")) ? "spacing-bottom" : "";
     var centerContentClass = (Model!.Content.Value<bool>("centerContentOnPage")) ? "center" : "";
 
+    var sectionBackgroundImage = Model?.Content.Value<IPublishedContent>("sectionBackgroundImage")?.Url() ?? null;
+
     bool.TryParse(ViewData["error_name"]?.ToString()!, out bool error_name);
     bool.TryParse(ViewData["error_phone"]?.ToString()!, out bool error_phone);
     bool.TryParse(ViewData["error_email"]?.ToString()!, out bool error_email);
@@ -18,6 +20,11 @@
 }
 
 <div id="contact-form" class="@spacingTopClass spacingBottomClass">
+
+    @if(!string.IsNullOrEmpty(sectionBackgroundImage))
+    {
+        <img class="background-image" src="@sectionBackgroundImage" alt="@sectionTitle background image" />
+    }
 
     <div class="container @centerContentClass">
 
