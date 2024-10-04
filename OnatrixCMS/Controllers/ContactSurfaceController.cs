@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnatrixCMS.Models;
+using OnatrixCMS.Services;
 using Umbraco.Cms.Core.Cache;
 using Umbraco.Cms.Core.Logging;
 using Umbraco.Cms.Core.Routing;
@@ -12,11 +13,13 @@ namespace OnatrixCMS.Controllers
 {
     public class ContactSurfaceController : SurfaceController
     {
-        public ContactSurfaceController(IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider) : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
+        private readonly EmailService _emailService;
+        public ContactSurfaceController(EmailService emailService, IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider) : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
         {
+            _emailService = emailService;
         }
 
-        public IActionResult HandleSubmit(ContactFormModel form)
+        public async Task<IActionResult> HandleSubmit(ContactFormModel form)
         {
             if (!ModelState.IsValid)
             {
@@ -32,8 +35,21 @@ namespace OnatrixCMS.Controllers
                 return CurrentUmbracoPage();
             }
 
-            TempData["success"] = "Form submitted successfully.";
-            return CurrentUmbracoPage();
+            var result = await _emailService.SendEmailAsync(form.Email);
+
+            if (result)
+            {
+                TempData["success"] = "Form submitted successfully";
+            }
+            else
+            {
+                TempData["error"] = "Failed to send email";
+            }
+
+            return RedirectToCurrentUmbracoPage();
+
+            //TempData["success"] = "Form submitted successfully.";
+            //return CurrentUmbracoPage();
         }
     }
 }

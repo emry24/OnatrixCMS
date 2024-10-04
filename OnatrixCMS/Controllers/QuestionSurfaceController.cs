@@ -36,8 +36,6 @@ namespace OnatrixCMS.Controllers
                 return CurrentUmbracoPage();
             }
 
-            //servicebus
-
             var result = await _emailService.SendEmailAsync(form.Email);
 
             if (result)
@@ -49,7 +47,6 @@ namespace OnatrixCMS.Controllers
                 TempData["error"] = "Failed to send email";
             }
 
-            //TempData["success"] = "Form submitted successfully.";
             return RedirectToCurrentUmbracoPage();
         }
     }

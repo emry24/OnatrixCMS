@@ -242,6 +242,9 @@ section {
   list-style-type: none;
   padding: 0;
 }
+.page-title .container .breadcrumb .active {
+  color: var(--color-secondary);
+}
 .page-title .container .breadcrumb li a {
   color: var(--color-primary);
 }
@@ -608,6 +611,7 @@ section {
 .tags {
   display: flex;
   flex-direction: column;
+  margin-bottom: 30px;
 }
 .tags .tag-items {
   display: flex;
@@ -881,6 +885,10 @@ form .content .form-input-group .form-invalid-input {
 .aside-recent-projects a .project-content .date p {
   color: var(--color-primary-light);
   padding-left: 5px;
+}
+
+#aside-content {
+  margin-bottom: 20px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

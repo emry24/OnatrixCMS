@@ -4,14 +4,6 @@ a {
     font-size: 1em;
     text-decoration: none;
 
-    &:hover {
-        //color: var(--color-secondary);
-    }
-
-    &.active {
-        //color: var(--color-secondary);
-    }
-
     &[target="_blank"] {
 
         &::after {
