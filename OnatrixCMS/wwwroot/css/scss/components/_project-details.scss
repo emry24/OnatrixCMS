@@ -17,6 +17,42 @@
             img {
                 max-width: 100%;
             }
+
+            .date {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-bottom: 20px;
+
+                i {
+                    color: var(--color-primary-light);
+                }
+
+                p {
+                    color: var(--color-primary-light);
+                    padding-left: 5px;
+                }
+            }
+
+            .project-tags {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 1em;
+                margin-top: 60px;
+                margin-bottom: 60px;
+
+                .project-tag {
+                    background-color: var(--color-secondary);
+                    border-radius: 30px;
+                    padding: 5px;
+
+                    p {
+                        padding: 5px 10px 5px 10px;
+                    }
+                }
+            }
         }
 
         aside {

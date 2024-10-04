@@ -10,6 +10,10 @@
             text-align: center;
             margin-bottom: 20px;
 
+            h2 {
+                color: var(--color-light);
+            }
+
             .success-numbers {
                 display: flex;
                 flex-direction: column;
@@ -26,6 +30,10 @@
 
                     h3 {
                         font-size: 70px;
+                    }
+
+                    p {
+                        color: var(--color-light);
                     }
                 }
             }

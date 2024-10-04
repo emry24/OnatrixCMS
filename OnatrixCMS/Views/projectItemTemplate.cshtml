@@ -4,6 +4,9 @@
 @{
 	Layout = "mainLayout.cshtml";
     ViewBag.Title = Model?.Value("pageTitle") ?? null;
+
+    var created = Model?.CreateDate.ToString("MMMM dd, yyyy");
+    var tags = Model?.Value<IEnumerable<string>>("projectTags") ?? [];
 }	
 
 @if (!string.IsNullOrEmpty(ViewBag.Title))
@@ -15,7 +18,28 @@
     <div class="container">
 
         <div class="project-details-content">
+
+            <div class="date">
+				<i class="fa-regular fa-calendar-days text-note"></i>
+                <p class="date-text">@created</p>
+            </div>
+            
             @Model.Value("pageContent")
+
+            @if (tags != null) 
+            {
+                <div class="project-tags">
+                    <h5>Tags:</h5>
+
+                    @foreach (var tag in tags)
+                    {
+                        <div class="project-tag">
+                            <p>@tag</p>
+                        </div>                      
+                    }
+                </div>
+            }
+
         </div>
 
         <div class="vertical-separator"></div>

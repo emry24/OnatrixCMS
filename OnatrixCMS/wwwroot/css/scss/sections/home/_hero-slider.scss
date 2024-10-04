@@ -1,12 +1,12 @@
 #hero-slider {
     position: relative;
     overflow: hidden;
-    height: 600px;
 
     .container {
         padding-top: 60px;
         position: relative;
         z-index: 1;
+        padding-bottom: 40px;
 
         .background-image {
             position: absolute;
@@ -16,15 +16,13 @@
             z-index: -1;
             overflow: hidden;
             max-width: none;
+            height: 100%;
+            object-fit: cover;
 
             @include tablet {
                 left: 50%;
                 transform: translateX(-50%);
-            }
-
-            @include desktop {
                 width: 100vw;
-                height: auto;
             }
         }
 
