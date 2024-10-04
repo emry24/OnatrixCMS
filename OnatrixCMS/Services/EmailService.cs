@@ -31,8 +31,7 @@ public class EmailService
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.Message);
-           
+            Console.WriteLine(ex.Message);          
         }
         return false;    
     
@@ -62,8 +61,6 @@ public class EmailService
                     </body>
             </html>",
             PlainText = $"Thank you, {email}! We have received your message and our team will get back to you shortly. Feel free to contact us if you need immediate assistance."
-            //HtmlBody = $"<html><body><h1>Thank you, {email}. We will get back to you shortly.</h1></body></html>",
-            //PlainText = $"Thank you, {email}. We will get back to you shortly."
         };
     }
 }
